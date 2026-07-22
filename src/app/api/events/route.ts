@@ -5,6 +5,8 @@ export async function GET(request: Request) {
   let sequence = 1048;
   const stream = new ReadableStream({
     start(controller) {
+      controller.enqueue(encoder.encode(`: connected${" ".repeat(2048)}\n\n`));
+
       const send = () => {
         sequence += 1;
         const now = new Date();
@@ -40,7 +42,9 @@ export async function GET(request: Request) {
     headers: {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache, no-transform",
+      "Content-Encoding": "identity",
       Connection: "keep-alive",
+      "X-Accel-Buffering": "no",
     },
   });
 }
