@@ -2,9 +2,13 @@
 
 [![CI](https://github.com/lalitheswaran11-stack/protocol-guardian-command-center/actions/workflows/ci.yml/badge.svg)](https://github.com/lalitheswaran11-stack/protocol-guardian-command-center/actions/workflows/ci.yml)
 
+[Open the live demo](https://protocol-guardian-command-center.lalitheshnarayanan.chatgpt.site)
+
 Protocol Guardian Command Center is a read-only DeFi operations dashboard for investigating validator health, oracle anomalies, withdrawal pressure, permissions, and incidents.
 
 All displayed protocol data is simulated. The emergency-action workflow previews a pause operation but never constructs, signs, or broadcasts a transaction.
+
+For a quick walkthrough, filter the validator table, open the live event stream, then use **SIMULATE PAUSE** to review the permission, calldata intent, and operational consequences before typed confirmation.
 
 ## Features
 

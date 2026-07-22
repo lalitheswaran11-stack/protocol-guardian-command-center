@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint .",
+    "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
+    "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
+    "lint": "eslint . --ignore-pattern dist",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -27,6 +27,8 @@
     "zustand": "5.0.14"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/workers-types": "^4.20260702.1",
     "@playwright/test": "1.61.1",
     "@tailwindcss/postcss": "4.3.3",
     "@testing-library/jest-dom": "6.9.1",
@@ -34,16 +36,23 @@
     "@types/node": "24.10.2",
     "@types/react": "19.2.5",
     "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.26",
     "eslint": "9.39.1",
     "eslint-config-next": "16.2.11",
     "jsdom": "27.2.0",
     "prettier": "3.9.6",
+    "react-server-dom-webpack": "19.2.7",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
-    "vitest": "4.1.10"
+    "vinext": "0.0.50",
+    "vite": "8.0.13",
+    "vitest": "4.1.10",
+    "wrangler": "4.92.0"
   },
   "overrides": {
     "postcss": "8.5.21",
     "sharp": "0.35.0"
-  }
+  },
+  "type": "module"
 }
