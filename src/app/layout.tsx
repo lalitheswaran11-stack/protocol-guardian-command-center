@@ -29,10 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/og.png",
-          width: 1800,
-          height: 936,
-          alt: "Protocol Guardian read-only operations dashboard",
+          url: "/og.jpg",
+          width: 1271,
+          height: 715,
+          alt: "Protocol Guardian operations dashboard",
         },
       ],
     },
@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Protocol Guardian Command Center",
       description: "Read-only protocol operations and safety simulation.",
-      images: ["/og.png"],
+      images: ["/og.jpg"],
     },
   };
 }

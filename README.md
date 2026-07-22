@@ -4,26 +4,34 @@
 
 [Open the live demo](https://protocol-guardian-command-center.lalitheshnarayanan.chatgpt.site)
 
-Protocol Guardian Command Center is a read-only DeFi operations dashboard for investigating validator health, oracle anomalies, withdrawal pressure, permissions, and incidents.
+Protocol Guardian Command Center is a read-only DeFi operations dashboard for investigating validator health, oracle reports, withdrawal pressure, permissions, and incidents.
 
-All displayed protocol data is simulated. The emergency-action workflow previews a pause operation but never constructs, signs, or broadcasts a transaction.
+I built it to explore how a high-risk protocol action could be reviewed without turning a dashboard into a transaction console. The pause workflow shows the caller, required role, calldata intent, estimated gas, expected state change, and user impact before it accepts the confirmation phrase.
 
-For a quick walkthrough, filter the validator table, open the live event stream, then use **SIMULATE PAUSE** to review the permission, calldata intent, and operational consequences before typed confirmation.
+## Demo path
 
-## Features
+1. Filter the 5,000-row validator table and open a validator record.
+2. Watch the simulated event feed update.
+3. Open **SIMULATE PAUSE**, review the consequences, and enter the confirmation phrase.
+
+Everything shown in the dashboard is simulated. There are no wallet connectors, signing calls, or transaction broadcasts.
+
+## Highlights
 
 - Protocol health metrics and trend charts
-- Searchable 5,000-validator data set with operational filters and CSV export
+- Searchable 5,000-validator data set, URL-persisted filters, and CSV export
 - Sequenced server-sent events with duplicate and ordering guards
-- Oracle-report review and withdrawal stress controls
-- Permission relationships and incident timeline
+- Oracle review, withdrawal stress controls, and an incident timeline
 - Typed-confirmation emergency simulation
-- URL-persisted filters, responsive layout, and light/dark themes
-- Unit, browser, and CI checks
+- Responsive light and dark themes
+
+![Protocol overview](docs/screenshots/overview.jpg)
+
+![Guardian simulation](docs/screenshots/guardian-simulation.jpg)
 
 ## Run locally
 
-Requires Node.js 20.9 or newer.
+Requires Node.js 22 or newer.
 
 ```bash
 npm ci
@@ -40,11 +48,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-## Data labels
-
-- **Mock:** protocol metrics, validators, oracle reports, incidents, and events
-- **Inferred:** gas, state changes, and consequences shown in the pause preview
-- **Read-only:** wagmi and viem providers are configured without wallet connectors or write transports
+See [my implementation notes](docs/NOTES.md) for the fixture model, event handling, and the choices behind the pause flow.
 
 ## Repository map
 
@@ -53,13 +57,5 @@ src/components/   dashboard sections and interaction components
 src/lib/          fixture generation, filtering, event handling, and local workflow state
 src/app/api/      simulated server-sent event route
 e2e/              Playwright workflows
-docs/             architecture, security, testing, and limitations
+docs/             implementation notes and screenshots
 ```
-
-See [architecture](docs/ARCHITECTURE.md), [security](docs/SECURITY.md), [testing](docs/TESTING.md), and [known limitations](docs/KNOWN_LIMITATIONS.md).
-
-## Screenshots
-
-![Protocol overview](docs/screenshots/overview.jpg)
-
-![Guardian simulation](docs/screenshots/guardian-simulation.jpg)
